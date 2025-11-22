@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from "axios";
 
@@ -11,6 +11,11 @@ const Register = () => {
     const {register, handleSubmit, formState:{errors} } = useForm()
 
     const {registerUser,updateUserProfile} = useAuth()
+
+    const location = useLocation()
+
+    const navigate = useNavigate();
+    console.log("regiser: ",location)
 
     const handleRegisteration =(data) =>{
         // console.log("after rregister:", data.photo[0]);
@@ -40,6 +45,7 @@ const Register = () => {
               updateUserProfile(userProfile)
               .then(result =>{
                 console.log("userprofile Done ",result)
+                navigate(location.state || '/')
               })
               .catch(error =>{
                 console.log(error)
@@ -99,7 +105,11 @@ const Register = () => {
           <button className="btn btn-neutral mt-4">Register</button>
         </fieldset>
         <p>New to Zap Shift
-            <Link className="text-blue-400 underline ml-2" to={'/login'}>Login</Link>
+            <Link 
+            state={location.state}
+
+            className="text-blue-400 underline ml-2"
+             to={'/login'}>Login</Link>
           </p>
       </form>
       <SocialLogin></SocialLogin>

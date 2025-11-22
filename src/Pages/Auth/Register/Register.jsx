@@ -1,18 +1,33 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
 
+
     const {register, handleSubmit, formState:{errors} } = useForm()
+
+    const {registerUser} = useAuth()
 
     const handleRegisteration =(data) =>{
         console.log("after rregister:", data)
+        registerUser(data.email, data.password)
+        .then(result =>{
+        
+             console.log(result)
+        })
+        .catch(error =>{
+          console.log(error)
+        })
 
     }
   return (
-    <div>
-      This is Register
-      <form onSubmit={handleSubmit(handleRegisteration)}>
+    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+       <h2 className="text-3xl font-bold text-center">Wellcome to Zap Shift</h2>
+        <p className="text-center">Please Register</p>
+      <form  className="card-body"  onSubmit={handleSubmit(handleRegisteration)}>
         <fieldset className="fieldset">
           <label className="label">Email</label>
           <input type="email" {...register('email', {required: true})} className="input" placeholder="Email" />
@@ -40,7 +55,11 @@ const Register = () => {
           </div>
           <button className="btn btn-neutral mt-4">Register</button>
         </fieldset>
+        <p>New to Zap Shift
+            <Link className="text-blue-400 underline ml-2" to={'/login'}>Login</Link>
+          </p>
       </form>
+      <SocialLogin></SocialLogin>
     </div>
   );
 };

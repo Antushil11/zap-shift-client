@@ -1,14 +1,21 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const SendParcel = () => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { error },
+    // formState: { error },
   } = useForm();
+
+  const {user} = useAuth()
+
+  const axiosSecure = useAxiosSecure();
 
   const serviceCenters = useLoaderData();
   const regionsDuplicate = serviceCenters.map((c) => c.region);
@@ -24,29 +31,51 @@ const SendParcel = () => {
 
   const handleSendParcel = (data) => {
     console.log(data);
-    const isDocument = data.parcelType === 'document';
+    const isDocument = data.parcelType === "document";
     const issameDistrict = data.senderDistrict === data.receiverDistrict;
     const parcelWeight = parseFloat(data.parcelWeight);
-    
 
     let cost = 0;
-    if(isDocument){
-        cost = issameDistrict? 60: 80;
+    if (isDocument) {
+      cost = issameDistrict ? 60 : 80;
+    } else {
+      if (parcelWeight < 3) {
+        cost = issameDistrict ? 110 : 150;
+      } else {
+        const minCharge = issameDistrict ? 110 : 150;
+        const extraWeight = parcelWeight - 3;
+        const extraCharge = issameDistrict
+          ? extraWeight * 40
+          : extraWeight * 40 + 40;
+        cost = minCharge + extraCharge;
+      }
     }
-    else{
-        if(parcelWeight < 3){
-            cost = issameDistrict ? 110 : 150;
-        }
-        else{
-            const minCharge = issameDistrict? 110 : 150;
-            const extraWeight = parcelWeight - 3;
-            const extraCharge = issameDistrict ? extraWeight * 40 : extraWeight*40+40;
-            cost = minCharge + extraCharge
+    console.log("cost ", cost);
 
-        }
+    Swal.fire({
+      title: "Agree with confirm the cost?",
+      text: `You will be chargee ${cost} taka!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "I Agree !",
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    }
-    console.log("cost ", cost)
+        //save the parcel 
+        axiosSecure.post('/parcels', data)
+        .then(res =>{
+          console.log('afeter saving parcels : ' ,res.data)
+        })
+
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+      }
+    });
   };
 
   return (
@@ -115,6 +144,7 @@ const SendParcel = () => {
             <input
               type="text"
               {...register("senderName")}
+              defaultValue={user?.displayName}
               className="input w-full"
               placeholder="Sender Name"
             />
@@ -124,6 +154,7 @@ const SendParcel = () => {
             <input
               type="email"
               {...register("senderEmail")}
+              defaultValue={user?.email}
               className="input w-full"
               placeholder="Sender Email"
             />

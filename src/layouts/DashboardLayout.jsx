@@ -1,6 +1,7 @@
 import React from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { FaCreditCard } from "react-icons/fa";
+import { FaCreditCard, FaUsers } from "react-icons/fa";
+import { RiMotorbikeFill } from "react-icons/ri";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -35,7 +36,6 @@ const DashboardLayout = () => {
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
-       
       </div>
 
       <div className="drawer-side is-drawer-close:overflow-visible">
@@ -49,7 +49,8 @@ const DashboardLayout = () => {
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
-              <Link to={"/"}
+              <Link
+                to={"/"}
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
@@ -74,18 +75,46 @@ const DashboardLayout = () => {
             {/* our dashbord links */}
 
             <li>
-                <NavLink  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Parcels"  to={"/dashboard/my-parcels"}>
-                    <CiDeliveryTruck />
-                    <span className="is-drawer-close:hidden">My Parcels</span>
-                    </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Parcels"
+                to={"/dashboard/my-parcels"}
+              >
+                <CiDeliveryTruck />
+                <span className="is-drawer-close:hidden">My Parcels</span>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+                to={"/dashboard/payment-history"}
+              >
+                <FaCreditCard />
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Approve Riders"
+                to={"/dashboard/approve-riders"}
+              >
+                <RiMotorbikeFill />
+                <span className="is-drawer-close:hidden">Approve Riders</span>
+              </NavLink>
             </li>
             <li>
-                <NavLink  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Payment History"  to={"/dashboard/payment-history"}>
-                    <FaCreditCard />
-                    <span className="is-drawer-close:hidden">Payment History</span>
-                    </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Users Management"
+                to={"/dashboard/users-management"}
+              >
+                <FaUsers />
+                <span className="is-drawer-close:hidden">Users Management</span>
+              </NavLink>
             </li>
 
             {/* List item */}

@@ -1,13 +1,14 @@
 import React from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { FaCreditCard, FaUsers } from "react-icons/fa";
+import { FaCreditCard, FaTasks, FaUsers } from "react-icons/fa";
 import { RiEBikeFill, RiMotorbikeFill } from "react-icons/ri";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
+import { SiGoogletasks } from "react-icons/si";
 
 const DashboardLayout = () => {
   const { role } = useRole();
-  
+
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -99,6 +100,37 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
+            {role === "rider" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Assigned Deliveries"
+                    to={"/dashboard/assigned-deliveries"}
+                  >
+                    <FaTasks />
+                    <span className="is-drawer-close:hidden">
+                      Assigned Deliveries
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Completed Deliveries"
+                    to={"/dashboard/completed-deliveries"}
+                  >
+                    <SiGoogletasks/>
+                    <span className="is-drawer-close:hidden">
+                      Complited Deliveries
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* admin only links */}
+
             {role === "admin" && (
               <>
                 <li>
@@ -114,7 +146,6 @@ const DashboardLayout = () => {
                   </NavLink>
                 </li>
 
-
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -127,7 +158,6 @@ const DashboardLayout = () => {
                     </span>
                   </NavLink>
                 </li>
-
 
                 <li>
                   <NavLink

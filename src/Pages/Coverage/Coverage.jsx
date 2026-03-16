@@ -7,25 +7,26 @@ const Coverage = () => {
   const position = [23.685, 90.3563];
 
   const serviceCenters = useLoaderData();
-  const mapRef = useRef(null)
-  
-  const heandleSearch = e => {
-         
-    e.preventDefault()
+  const mapRef = useRef(null);
+
+  const heandleSearch = (e) => {
+    e.preventDefault();
     const location = e.target.location.value;
 
-    const district = serviceCenters.find(c => c.district.toLowerCase().includes(location.toLowerCase()))
-    if(district){
-        const coord = [district.latitude, district.longitude]
-        console.log(coord, district)
+    const district = serviceCenters.find((c) =>
+      c.district.toLowerCase().includes(location.toLowerCase())
+    );
+    if (district) {
+      const coord = [district.latitude, district.longitude];
+      // console.log(coord, district);
 
-        // go to the location
-        
-        mapRef.current.flyTo(coord,14)
+      // go to the location
+
+      mapRef.current.flyTo(coord, 14);
     }
-  }
+  };
   return (
-    <div>
+    <div className="p-8">
       <h2 className="text-5xl font-bold">We are available in 64 districts</h2>
 
       {/* search */}
@@ -49,7 +50,12 @@ const Coverage = () => {
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input name="location" type="search" className="grow" placeholder="Search" />
+            <input
+              name="location"
+              type="search"
+              className="grow"
+              placeholder="Search"
+            />
             <button></button>
           </label>
         </form>

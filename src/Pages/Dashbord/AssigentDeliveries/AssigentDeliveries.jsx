@@ -18,26 +18,30 @@ const AssigentDeliveries = () => {
     },
   });
 
-  const handleDeliveryStatusUpdate = (parcel, status) => {
-    const statusInfo = { delivertSatus: status};
-
-
-    let message = `parcel Staus updated to  ${status.split('_').join(' ') } `;
-    axiosSecure
-      .patch(`/parcels/${parcel._id}/status`, statusInfo)
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: message,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
+ const handleDeliveryStatusUpdate = (parcel, status) => {
+  const statusInfo = {
+    deliveryStatus: status,
+    riderId: parcel.riderId,
+    trackingId: parcel.trackingId,
   };
+
+  let message = `Parcel status updated to ${status.split("_").join(" ")}`;
+
+  axiosSecure
+    .patch(`/parcels/${parcel._id}/status`, statusInfo)
+    .then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+};
 
   return (
     <div>
@@ -63,12 +67,16 @@ const AssigentDeliveries = () => {
                   {parcel.deliveryStatus === "driver-assigned" ? (
                     <>
                       <button
-                        onClick={() => handleDeliveryStatusUpdate(parcel,'rider-arriving')}
+                        onClick={() =>
+                          handleDeliveryStatusUpdate(parcel, "rider-arriving")
+                        }
                         className="btn btn-primary mr-2  text-black"
                       >
                         Accept
                       </button>
-                      <button className="btn bg-amber-600  text-black">Reject</button>
+                      <button className="btn bg-amber-600  text-black">
+                        Reject
+                      </button>
                     </>
                   ) : (
                     <span>Delivery accpted</span>
@@ -76,16 +84,20 @@ const AssigentDeliveries = () => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handleDeliveryStatusUpdate(parcel, 'parcle_picked_up')}
+                    onClick={() =>
+                      handleDeliveryStatusUpdate(parcel, "parcle_picked_up")
+                    }
                     className="btn btn-primary mr-2 text-black "
                   >
                     Mark as Pick uP
                   </button>
                   <button
-                    onClick={() => handleDeliveryStatusUpdate(parcel, 'parcel_delivered')}
+                    onClick={() =>
+                      handleDeliveryStatusUpdate(parcel, "parcel_delivered")
+                    }
                     className="btn btn-primary mr-2 text-black "
                   >
-                     Mark as Delever
+                    Mark as Delever
                   </button>
                 </td>
               </tr>

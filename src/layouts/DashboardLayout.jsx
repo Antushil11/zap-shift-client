@@ -5,6 +5,7 @@ import { RiEBikeFill, RiMotorbikeFill } from "react-icons/ri";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { SiGoogletasks } from "react-icons/si";
+import logoImg from "../assets/logo.png";
 
 const DashboardLayout = () => {
   const { role } = useRole();
@@ -52,9 +53,16 @@ const DashboardLayout = () => {
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
+
+            <li>
+              <Link to={'/'}><img src={logoImg} alt="" /></Link>
+            </li>
+
+
+
             <li>
               <Link
-                to={"/"}
+                to="/dashboard"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
@@ -120,7 +128,7 @@ const DashboardLayout = () => {
                     data-tip="Completed Deliveries"
                     to={"/dashboard/completed-deliveries"}
                   >
-                    <SiGoogletasks/>
+                    <SiGoogletasks />
                     <span className="is-drawer-close:hidden">
                       Complited Deliveries
                     </span>

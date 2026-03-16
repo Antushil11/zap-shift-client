@@ -52,14 +52,15 @@ const MyParcels = () => {
 
 
   const handlePayment = async(parcel) =>{
-       const paymentInfo = {
+       const parcelInfo = {
         cost: parcel.cost,
         parcelId: parcel._id,
         senderEmail: parcel.senderEmail,
-        parcelName: parcel.parcelName
+        parcelName: parcel.parcelName,
+        trackingId: parcel.trackingId,
        }
 
-       const res = await axiosSecure.post('/payment-chechout-session', paymentInfo);
+       const res = await axiosSecure.post('/payment-chechout-session', parcelInfo);
       
       console.log(res.data.url)
        window.location.assign(res.data.url);
@@ -99,7 +100,9 @@ const MyParcels = () => {
                     
                   )}
                 </td>
-                <td>{parcel.trackingId}</td>
+                <td>
+                  <Link to={`/parcel-track/${parcel.trackingId}`}>{parcel.trackingId}</Link>
+                </td>
                 <td>{parcel.deliveryStatus}</td>
                 <td>
                   <button className="btn btn-square hover:bg-primary">

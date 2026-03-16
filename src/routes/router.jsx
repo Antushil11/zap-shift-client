@@ -22,6 +22,8 @@ import AssignRiders from "../Pages/Dashbord/AssignRiders/AssignRiders";
 import AssigentDeliveries from "../Pages/Dashbord/AssigentDeliveries/AssigentDeliveries";
 import RiderRoute from "./RiderRoute";
 import CompletedDeliveres from "../Pages/Dashbord/CompletedDeliveres/CompletedDeliveres";
+import ParcelTreack from "../Pages/ParcelTreack/ParcelTreack";
+import DashbordHome from "../Pages/Dashbord/DashbordHome/DashbordHome";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,10 @@ export const router = createBrowserRouter([
         Component: Coverage,
         loader:() => fetch('/serviceCenters.json').then(res => res.json())
       },
+      {
+        path: "/parcel-track/:trackingId",
+        element: <ParcelTreack></ParcelTreack>
+      }
     ],
   },
   {
@@ -68,6 +74,11 @@ export const router = createBrowserRouter([
     path:'/dashboard',
     element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
+      {
+        index: true,
+        Component: DashbordHome
+
+      },
       {
         path:'my-parcels',
         element: <MyParcels></MyParcels>

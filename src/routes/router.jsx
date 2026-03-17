@@ -24,6 +24,7 @@ import RiderRoute from "./RiderRoute";
 import CompletedDeliveres from "../Pages/Dashbord/CompletedDeliveres/CompletedDeliveres";
 import ParcelTreack from "../Pages/ParcelTreack/ParcelTreack";
 import DashbordHome from "../Pages/Dashbord/DashbordHome/DashbordHome";
+import Aboutpage from "../Pages/Aboutpage/Aboutpage";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "/parcel-track/:trackingId",
         element: <ParcelTreack></ParcelTreack>
+      },
+      {
+        path: "/about-us",
+        element:<Aboutpage></Aboutpage>
       }
     ],
   },

@@ -4,7 +4,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const ReviewCard = ({ review }) => {
   const { userName, review: testimonial,user_photoURL } = review;
   return (
-    <div className="max-w-sm p-6 rounded-xl bg-white shadow-md  ">
+    <div className="max-w-7xl mx-auto p-6 rounded-xl bg-white shadow-md  ">
       {/* Quote Icon */}
       <FaQuoteLeft className="text-3xl text-primary mb-4" />
 

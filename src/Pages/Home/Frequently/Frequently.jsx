@@ -86,9 +86,9 @@ const Frequently = () => {
         <button className="btn rounded-2xl bg-[#CAEB66] font-bold ">
           See More FAQ’s{" "}
         </button>
-        <div className="bg-black w-40  rounded-full h-10 flex items-center justify-center ">
+        <a className="bg-black w-40 link link-hover no-underline  rounded-full h-10 flex items-center justify-center ">
           <VscLinkExternal className="text-[#CAEB66] " size={20} />
-        </div>
+        </a>
       </div>
     </div>
   );

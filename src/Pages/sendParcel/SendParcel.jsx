@@ -85,13 +85,18 @@ const SendParcel = () => {
 
   return (
     <div>
-      <h2 className="text-5xl font-bold">Send A Parcel</h2>
+      
+     
       <form
         onSubmit={handleSubmit(handleSendParcel)}
-        className="mt-12 p-4 text-black"
+        className="my-6 bg-white rounded-2xl max-w-[1400px] mx-auto p-4 text-black"
       >
+        <h2 className="text-5xl mb-6 font-extrabold text-[#03373D]">Send A Parcel</h2>
+         <p className="text-2xl mb-6 font-extrabold text-[#03373D]">Enter your parcel details</p>
+        
         {/* parcel type */}
         <div>
+          
           <label className="label mr-4">
             <input
               type="radio"

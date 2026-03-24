@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
   const { register, handleSubmit, formState:{errors} } = useForm();
@@ -21,6 +22,8 @@ const Login = () => {
     })
     .catch(error =>{
         console.log(error)
+        toast.error("No account found with this email &  password ❌");
+        
     })
 
 
@@ -72,6 +75,19 @@ const Login = () => {
           </p>
         </form>
         <SocialLogin></SocialLogin>
+         {/* Toast Container */}
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
       </div>
     </div>
   );

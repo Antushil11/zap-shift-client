@@ -18,16 +18,16 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li>
+      <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
         <NavLink to="/">Services</NavLink>
       </li>
-      <li>
+      <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
         <NavLink to="/send-parcel">Send Parcel</NavLink>
       </li>
-      <li>
+      <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
         <NavLink to="/rider">Be a Rider</NavLink>
       </li>
-      <li>
+      <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
         <NavLink to="/coverage">Coverage Areas</NavLink>
       </li>
      
@@ -35,22 +35,22 @@ const Navbar = () => {
 
       {user && (
         <>
-          <li>
+          <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
             <NavLink to="/dashboard/my-parcels">My Parcel</NavLink>
           </li>
-          <li>
+          <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
             <NavLink to="/dashboard">Dashbord</NavLink>
           </li>
         </>
       )}
-       <li>
+       <li className="ml-4 hover:bg-[#CAEB66] rounded-2xl">
         <NavLink to="/about-us">About Us</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm rounded-2xl">
+    <div className="navbar bg-base-100 shadow-sm rounded-2xl p-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -13,7 +13,11 @@
   --color-secondary: #03373D;
 }
 
-
+a.active {
+  background-color: #CAEB66;
+  color: black;
+  border-radius: 20px;
+}
 
 body{
   font-family: "Urbanist", sans-serif;

@@ -46,12 +46,13 @@ const Rider = () => {
 
   return (
     <div>
-      <h2 className="text-4xl text-primary">Be a Rider</h2>
+    
 
       <form
         onSubmit={handleSubmit(handleRiderApplication)}
-        className="mt-12 p-4 text-black"
+        className="my-6 bg-white rounded-2xl max-w-[1400px] mx-auto p-4 text-black"
       >
+          <h2 className="text-4xl text-primary">Be a Rider</h2>
         {/* two colum */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 my-8">

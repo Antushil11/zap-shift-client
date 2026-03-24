@@ -26,14 +26,14 @@ const Coverage = () => {
     }
   };
   return (
-    <div className="p-8">
-      <h2 className="text-5xl font-bold">We are available in 64 districts</h2>
+    <div className="max-w-[1400px] mx-auto p-6">
+      <h2 className="text-5xl font-extrabold text-[#03373D]">We are available in 64 districts</h2>
 
       {/* search */}
 
       <div>
-        <form onSubmit={heandleSearch}>
-          <label className="input">
+        <form className="py-6" onSubmit={heandleSearch}>
+          <label className="input ">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
@@ -60,6 +60,7 @@ const Coverage = () => {
           </label>
         </form>
       </div>
+       <h2 className="text-3xl font-extrabold text-[#03373D] mb-6">We deliver almost all over Bangladesh</h2>
 
       <div className="border w-full h-[800px]">
         <MapContainer

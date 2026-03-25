@@ -63,7 +63,7 @@ const DashboardLayout = () => {
             <li>
               <Link
                 to="/dashboard"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-2"
                 data-tip="Homepage"
               >
                 {/* Home icon */}
@@ -88,7 +88,7 @@ const DashboardLayout = () => {
 
             <li>
               <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right my-4 py-2 "
                 data-tip="My Parcels"
                 to={"/dashboard/my-parcels"}
               >
@@ -99,7 +99,7 @@ const DashboardLayout = () => {
 
             <li>
               <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-2 "
                 data-tip="Payment History"
                 to={"/dashboard/payment-history"}
               >
@@ -112,7 +112,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-2"
                     data-tip="Assigned Deliveries"
                     to={"/dashboard/assigned-deliveries"}
                   >
@@ -124,7 +124,7 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-2"
                     data-tip="Completed Deliveries"
                     to={"/dashboard/completed-deliveries"}
                   >
@@ -143,7 +143,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right my-4 py-2"
                     data-tip="Approve Riders"
                     to={"/dashboard/approve-riders"}
                   >
@@ -156,7 +156,7 @@ const DashboardLayout = () => {
 
                 <li>
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-2"
                     data-tip="Assign Riders"
                     to={"/dashboard/assign-riders"}
                   >
@@ -169,7 +169,7 @@ const DashboardLayout = () => {
 
                 <li>
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right my-4 py-2"
                     data-tip="Users Management"
                     to={"/dashboard/users-management"}
                   >

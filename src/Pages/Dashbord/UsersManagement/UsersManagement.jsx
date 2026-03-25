@@ -53,9 +53,9 @@ const UsersManagement = () => {
     });
   };
   return (
-    <div>
-      <h2 className="text-4xl">Users Management {users.length}</h2>
-      <p>search text: {searchText}</p>
+    <div className="max-w-6xl mx-auto bg-white">
+      <h2 className="text-2xl font-bold py-4 text-[#03373D]">Users Management {users.length}</h2>
+      <p className=" font-bold  text-[#03373D]">search text: {searchText}</p>
 
       <label className="input">
         <svg

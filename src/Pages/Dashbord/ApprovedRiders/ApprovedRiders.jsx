@@ -43,15 +43,15 @@ const ApprovedRiders = () => {
   }
 
   return (
-    <div>
-      <h2 className="text-5xl">Riders Pending Approval : {riders.length}</h2>
+    <div className="max-w-6xl mx-auto bg-white">
+      <h2 className="text-2xl font-bold py-4 text-[#03373D]">Riders Pending Approval : {riders.length}</h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>NO</th>
               <th>Name</th>
               <th>Email</th>
               <th>District</th>
@@ -84,22 +84,22 @@ const ApprovedRiders = () => {
                 <td>
                   <button
                    
-                    className="btn "
+                    className="btn btn-square hover:bg-primary "
                   >
                     <FaEye />
                   </button>
                   <button
                     onClick={() => handleApproval(rider)}
-                    className="btn "
+                    className="btn btn-square hover:bg-primary ml-2"
                   >
                     <FaUserCheck />
                   </button>
                   <button 
                   onClick={ () => handleRejection(rider)}
-                   className="btn ">
+                   className="btn btn-square hover:bg-primary ml-2">
                     <IoPersonRemove />
                   </button>
-                  <button className="btn ">
+                  <button className="btn btn-square hover:bg-primary ml-2">
                     <FaTrashAlt />
                   </button>
                 </td>

@@ -24,9 +24,9 @@ const AdminDashBordHomepage = () => {
   }
 
   return (
-    <div>
-      <h2 className="text-2xl">Admin Dashbord</h2>
-      <div className="stats shadow ">
+    <div className="max-w-6xl mx-auto bg-white">
+      <h2 className="text-2xl font-bold py-4 text-[#03373D]">Admin Dashbord</h2>
+      <div className="stats shadow grid ">
         {deliveryStatus.map((stat) => (
           <div key={stat._id} className="stat">
             <div className="stat-figure text-secondary">
@@ -50,7 +50,7 @@ const AdminDashBordHomepage = () => {
           </div>
         ))}
       </div>
-      <div className="w-full h-[400px]">
+      <div className="w-full h-[400px] ">
         <PieChart
           style={{
             width: "100%",

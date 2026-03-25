@@ -65,8 +65,8 @@ const AssignRiders = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-5xl ">Assign Riders: {parcels.length}</h2>
+    <div className="max-w-6xl mx-auto bg-white">
+      <h2 className="text-2xl font-bold py-4 text-[#03373D]">Assign Riders: {parcels.length}</h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
